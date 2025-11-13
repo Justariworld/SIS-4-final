@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var errorText: TextView
     private lateinit var recyclerView: RecyclerView
     private val adapter = PostAdapter()
-
     private val job = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
 

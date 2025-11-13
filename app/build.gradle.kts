@@ -50,6 +50,14 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,23 +65,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-// Классический UI и списки
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-
-// Coroutines — асинхронные операции (то, что было в лекции про корутины)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
-
-// Retrofit — HTTP клиент
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-// Конвертер JSON → Kotlin объекты
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-
-// OkHttp + логгер — чтобы в Logcat видеть запросы/ответы
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
 
 
 }

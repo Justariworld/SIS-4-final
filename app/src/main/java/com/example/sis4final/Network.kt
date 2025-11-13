@@ -10,7 +10,7 @@ object Network {
     private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
     private val logging = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY // логируем запросы/ответы
+        level = HttpLoggingInterceptor.Level.BODY
     }
 
     private val client = OkHttpClient.Builder()
