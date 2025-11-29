@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val adapter = PostAdapter()
     private val job = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
+    private lateinit var repository: PostRepository // Новый репозиторий
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,14 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        // 1) Берём базу
+        val db = DatabaseProvider.getDatabase(applicationContext)
+        // 2) Создаём репозиторий: сеть + Room
+        repository = PostRepository(
+            api = Network.api,
+            postDao = db.postDao()
+        )
+
         errorText.setOnClickListener { loadPosts() }
 
         loadPosts()
@@ -40,7 +49,8 @@ class MainActivity : AppCompatActivity() {
         uiScope.launch {
             try {
                 val posts = withContext(Dispatchers.IO) {
-                    Network.api.getPosts()
+                    //Network.api.getPosts() - удаляем так как теперь мы обращаемся к Реп
+                    repository.loadPosts() //обращаемся к Реп
                 }
                 adapter.setItems(posts)
                 showContent()
